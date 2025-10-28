@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <!--
+# ==========================================
+# Project:     Derby Taxi Service ~ derbytaxiservice.com.au
+# Author:      Colin Dixon BSc, DipEd, Coxswain Grade 1 NC, Cert IV TAE
+# Contact:     crdixon@gmail.com
+# Timestamp:   28/10/2025 05:05 PM AWST (Derby)
+# Version:     25.10.007
+# File Name:   index.html
+# Description: Stable layout + centred modal + hero overlay (OzeGlass V1-10-02)
+# ==========================================
+-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Colin Dixon BSc, DipEd, Cert IV TAE" />
+    <meta name="version" content="25.10.007" />
+    <meta name="timestamp" content="28/10/2025 05:05 PM AWST (Derby)" />
+    <title>
+      Derby Taxi Service | Reliable Taxis & Charters in the Kimberley
+    </title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link rel="manifest" href="images/site.webmanifest" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body data-theme="dark">
+    <!-- Top controls -->
+    <div class="floating-top">
+      <button id="disclaimer-btn" class="glass-pill small">
+        Privacy & Disclaimer
+      </button>
+      <button id="theme-pill" class="glass-pill small">
+        <span id="theme-icon">🌙</span> <span id="theme-label">Dark</span>
+      </button>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero-wrap">
+      <div class="hero container glass-card">
+        <div class="hero-col hero-logo">
+          <img
+            src="images/logo.webp"
+            alt="Derby Taxi Service logo"
+            class="logo"
+          />
+        </div>
+        <div class="hero-col hero-text">
+          <h1>
+            Your Reliable Taxi and Charter Service in Derby and the Kimberley
+          </h1>
+          <p>
+            Providing quality, reliable and efficient transport for residents,
+            communities and visitors.
+          </p>
+          <button id="enquireBtn" class="glass-pill">Make an Enquiry</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Services -->
+      <section id="services" class="glass-card">
+        <h2>Our Services</h2>
+        <ul class="services-list">
+          <li>Taxi Services</li>
+          <li>Group Bookings & Social Functions</li>
+          <li>Chartered Services</li>
+          <li>Derby & Curtin Airport Transfers</li>
+          <li>Parcel Deliveries</li>
+          <li>Multi-Purpose Taxi (Wheelchair Accessible)</li>
+          <li>CabCharge Accepted</li>
+          <li>PTSS Assistance</li>
+        </ul>
+        <picture>
+          <source srcset="images/ai-van-sunset-front.webp" type="image/webp" />
+          <img
+            src="images/ai-van-sunset-front.jpg"
+            alt="Derby Taxi van at sunset"
+            class="content-image"
+            loading="lazy"
+          />
+        </picture>
+      </section>
+
+      <!-- Fares -->
+      <section id="fares" class="glass-card">
+        <h2>Official Fares (Kimberley Region)</h2>
+        <p>
+          Fares are regulated by the WA Department of Transport. These are the
+          maximum fares chargeable.
+        </p>
+        <div class="table-wrap">
+          <table class="fare-table">
+            <thead>
+              <tr>
+                <th>Tariff</th>
+                <th>Details</th>
+                <th>Flagfall</th>
+                <th>Per km</th>
+                <th>Per hour (waiting)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Tariff 1</b></td>
+                <td>Mon–Fri 6 am – 6 pm</td>
+                <td>$5.40</td>
+                <td>$2.82</td>
+                <td>$61.00</td>
+              </tr>
+              <tr>
+                <td><b>Tariff 2</b></td>
+                <td>Weeknights, Weekends & Public Holidays</td>
+                <td>$7.70</td>
+                <td>$2.82</td>
+                <td>$61.00</td>
+              </tr>
+              <tr>
+                <td><b>Tariff 3</b></td>
+                <td>5+ passengers or large vehicle requested</td>
+                <td>$7.70</td>
+                <td>$4.15</td>
+                <td>$95.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="smallprint">
+          A call-out fee of $1.90 may apply. Non-cash payments may incur a
+          surcharge of up to 5 %.
+        </p>
+      </section>
+      <section id="fares" class="glass-card">
+        <h2>Official Fares (Kimberley Region)</h2>
+        <p>
+          Fares are regulated by the WA Department of Transport. These are the
+          maximum fares chargeable.
+        </p>
+
+        <div class="table-wrap">
+          <!-- existing table unchanged -->
+        </div>
+
+        <p class="smallprint">
+          A call-out fee of $1.90 may apply. Non-cash payments may incur a
+          surcharge of up to 5 %.
+        </p>
+
+        <!-- NEW: authoritative source note -->
+        <p class="source-note">
+          Based on WA DoT
+          <a
+            href="https://www.transport.wa.gov.au/on-demand-transport/booking-services/rank-hail-taxi-fares"
+            target="_blank"
+            rel="noopener"
+            >Schedule 5 (Kimberley)</a
+          >. Effective 3&nbsp;May&nbsp;2024.
+        </p>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="glass-card">
+        <h2>Why Choose Us?</h2>
+        <p>
+          Derby Taxi Service was established in 2004 and is now proudly operated
+          by Sage Services Australia P/L. We continually improve our operations
+          to provide the most professional and dependable transport system in
+          Derby and surrounding communities. Our modern fleet includes
+          wheelchair-accessible vehicles to meet the needs of all residents and
+          visitors.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="footer">
+      © 2025 Derby Taxi Service. v25.10.007 — 28/10/2025 05:05 PM AWST (Derby)
+      Web design by <b>oze.au</b>
+    </footer>
+
+    <!-- Bottom actions -->
+    <div class="floating-bottom">
+      <a href="tel:+61477313313" class="glass-pill large"
+        >📞 0477&nbsp;313&nbsp;313</a
+      >
+      <button id="enquire-pill" class="glass-pill large">✉️ Enquire Now</button>
+    </div>
+
+    <!-- Modals -->
+    <div id="disclaimer-modal" class="modal" aria-hidden="true" role="dialog">
+      <div class="modal-card glass-card" role="document">
+        <button class="modal-close" id="close-disclaimer" aria-label="Close">
+          ×
+        </button>
+        <h2>Privacy & Disclaimer</h2>
+        <p>
+          <b>Privacy:</b> We collect your name, email and phone number solely to
+          respond to your enquiry. No third-party sharing.
+        </p>
+        <p>
+          <b>Disclaimer:</b> All information on this site is subject to change
+          without notice. Please confirm details when booking.
+        </p>
+        <button id="close-disclaimer-btn" class="glass-pill">Close</button>
+      </div>
+    </div>
+
+    <div id="enquiry-modal" class="modal" aria-hidden="true" role="dialog">
+      <div class="modal-card glass-card" role="document">
+        <button class="modal-close" id="close-enquiry" aria-label="Close">
+          ×
+        </button>
+        <h2>Make an Enquiry</h2>
+        <form id="enquiry-form" novalidate>
+          <div class="grid">
+            <label>Name<input type="text" name="name" required /></label>
+            <label>Email<input type="email" name="email" required /></label>
+            <label>Phone<input type="tel" name="phone" required /></label>
+            <label>Postcode<input type="text" name="postcode" /></label>
+            <label
+              >Passengers<input
+                type="number"
+                name="passengers"
+                min="1"
+                required
+            /></label>
+            <label
+              >Pickup Date<input type="date" name="pickupDate" required
+            /></label>
+            <label
+              >Pickup Time<input type="time" name="pickupTime" required
+            /></label>
+            <label
+              >Pickup Address<input type="text" name="pickupAddress" required
+            /></label>
+            <label
+              >Destination<input type="text" name="destinationAddress" required
+            /></label>
+            <label class="full"
+              >Requirements<textarea
+                name="specialRequirements"
+                rows="2"
+              ></textarea>
+            </label>
+          </div>
+          <button type="submit" class="glass-pill large">Review Enquiry</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

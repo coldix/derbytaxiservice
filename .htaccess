@@ -1,0 +1,55 @@
+# ------------------------------------------
+# Canonical HTTPS (redirect www -> bare)
+# ------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.derbytaxiservice\.com\.au$ [NC]
+RewriteRule ^ https://derbytaxiservice.com.au%{REQUEST_URI} [L,R=301]
+
+# ------------------------------------------
+# Correct MIME for webmanifest
+# ------------------------------------------
+AddType application/manifest+json .webmanifest
+
+# ------------------------------------------
+# Light cache for robots/sitemap
+# ------------------------------------------
+<FilesMatch "^(robots\.txt|sitemap\.xml)$">
+  <IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 hour"
+  </IfModule>
+</FilesMatch>
+
+# ------------------------------------------
+# Compression (gzip / Brotli if available)
+# ------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript image/svg+xml
+</IfModule>
+
+# ------------------------------------------
+# Caching (static assets)
+# ------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+# ------------------------------------------
+# Security headers (safe defaults)
+# ------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>

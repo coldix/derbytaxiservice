@@ -1,0 +1,22 @@
+{
+  "name": "Derby Taxi Service",
+  "short_name": "Derby Taxi",
+  "description": "Reliable taxis and charters in Derby and the Kimberley.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#111111",
+  "background_color": "#111111",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
