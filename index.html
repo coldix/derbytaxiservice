@@ -6,17 +6,23 @@
 # Project:     Derby Taxi Service ~ derbytaxiservice.com.au
 # Author:      Colin Dixon BSc, DipEd, Coxswain Grade 1 NC, Cert IV TAE
 # Contact:     crdixon@gmail.com
-# Timestamp:   28/10/2025 09:06 PM AWST (Derby)
-# Version:     25.10.008
+# Timestamp:   28/10/2025 09:30 PM AWST (Derby)
+# Version:     25.10.009
 # File Name:   index.html
-# Description: Stable layout + centred modal + hero overlay (OzeGlass V1-10-02)
+# Description: Stable layout, single fares section, OG/Twitter image (1200x630), canonical, JSON-LD, footer link, enquiry notice. (OzeGlass V1-10-02)
 # ==========================================
 -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Colin Dixon BSc, DipEd, Cert IV TAE" />
-    <meta name="version" content="25.10.007" />
-    <meta name="timestamp" content="28/10/2025 05:05 PM AWST (Derby)" />
+    <meta name="version" content="25.10.009" />
+    <meta name="timestamp" content="28/10/2025 09:30 PM AWST (Derby)" />
+    <meta
+      name="robots"
+      content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://derbytaxiservice.com.au/" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://derbytaxiservice.com.au/" />
@@ -30,11 +36,11 @@
     />
     <meta
       property="og:image"
-      content="https://derbytaxiservice.com.au/images/ai-van-sunset-front.webp"
+      content="https://derbytaxiservice.com.au/images/og-van-1200x630.webp"
     />
     <meta property="og:image:type" content="image/webp" />
-    <meta property="og:image:width" content="960" />
-    <meta property="og:image:height" content="701" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -48,16 +54,6 @@
     />
     <meta
       name="twitter:image"
-      content="https://derbytaxiservice.com.au/images/ai-van-sunset-front.webp"
-    />
-    <meta
-      property="og:image"
-      content="https://derbytaxiservice.com.au/images/og-van-1200x630.webp"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      name="twitter:image"
       content="https://derbytaxiservice.com.au/images/og-van-1200x630.webp"
     />
 
@@ -65,6 +61,7 @@
       Derby Taxi Service | Reliable Taxis & Charters in the Kimberley
     </title>
 
+    <!-- Icons / Manifest -->
     <link
       rel="icon"
       type="image/png"
@@ -72,16 +69,101 @@
       href="images/favicon-32x32.png"
     />
     <link rel="manifest" href="images/site.webmanifest" />
+
     <link rel="stylesheet" href="style.css" />
+
+    <!-- LocalBusiness + FAQ JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Derby Taxi Service",
+        "url": "https://derbytaxiservice.com.au/",
+        "image": "https://derbytaxiservice.com.au/images/og-van-1200x630.webp",
+        "telephone": "+61 477 313 313",
+        "email": "info@derbytaxiservice.com.au",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "PO Box 711",
+          "addressLocality": "Derby",
+          "addressRegion": "WA",
+          "postalCode": "6728",
+          "addressCountry": "AU"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Derby–West Kimberley"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "paymentAccepted": ["Cash", "Card", "CabCharge"],
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Wheelchair accessible vehicle (MPT)",
+            "value": true
+          }
+        ],
+        "sameAs": [
+          "https://www.transport.wa.gov.au/on-demand-transport/booking-services/rank-hail-taxi-fares"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you have wheelchair accessible taxis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We operate Multi-Purpose Taxi (MPT) vehicles and assist with PTSS claims."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book urgently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For same-day or urgent trips, call 0477 313 313. The website form sends an email and may not be seen for up to 24 hours."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body data-theme="dark">
     <!-- Top controls -->
     <div class="floating-top">
-      <button id="disclaimer-btn" class="glass-pill small">
-        Privacy & Disclaimer
+      <button
+        id="disclaimer-btn"
+        class="glass-pill small"
+        aria-label="Open privacy and disclaimer"
+      >
+        Privacy &amp; Disclaimer
       </button>
-      <button id="theme-pill" class="glass-pill small">
+      <button
+        id="theme-pill"
+        class="glass-pill small"
+        aria-label="Toggle light or dark theme"
+      >
         <span id="theme-icon">🌙</span> <span id="theme-label">Dark</span>
       </button>
     </div>
@@ -94,6 +176,8 @@
             src="images/logo.webp"
             alt="Derby Taxi Service logo"
             class="logo"
+            width="706"
+            height="706"
           />
         </div>
         <div class="hero-col hero-text">
@@ -104,7 +188,13 @@
             Providing quality, reliable and efficient transport for residents,
             communities and visitors.
           </p>
-          <button id="enquireBtn" class="glass-pill">Make an Enquiry</button>
+          <button
+            id="enquireBtn"
+            class="glass-pill"
+            aria-label="Open enquiry form"
+          >
+            Make an Enquiry
+          </button>
         </div>
       </div>
     </header>
@@ -115,9 +205,9 @@
         <h2>Our Services</h2>
         <ul class="services-list">
           <li>Taxi Services</li>
-          <li>Group Bookings & Social Functions</li>
+          <li>Group Bookings &amp; Social Functions</li>
           <li>Chartered Services</li>
-          <li>Derby & Curtin Airport Transfers</li>
+          <li>Derby &amp; Curtin Airport Transfers</li>
           <li>Parcel Deliveries</li>
           <li>Multi-Purpose Taxi (Wheelchair Accessible)</li>
           <li>CabCharge Accepted</li>
@@ -130,17 +220,20 @@
             alt="Derby Taxi van at sunset"
             class="content-image"
             loading="lazy"
+            width="960"
+            height="701"
           />
         </picture>
       </section>
 
-      <!-- Fares -->
+      <!-- Fares (single section) -->
       <section id="fares" class="glass-card">
         <h2>Official Fares (Kimberley Region)</h2>
         <p>
           Fares are regulated by the WA Department of Transport. These are the
           maximum fares chargeable.
         </p>
+
         <div class="table-wrap">
           <table class="fare-table">
             <thead>
@@ -162,7 +255,7 @@
               </tr>
               <tr>
                 <td><b>Tariff 2</b></td>
-                <td>Weeknights, Weekends & Public Holidays</td>
+                <td>Weeknights, Weekends &amp; Public Holidays</td>
                 <td>$7.70</td>
                 <td>$2.82</td>
                 <td>$61.00</td>
@@ -177,35 +270,19 @@
             </tbody>
           </table>
         </div>
-        <p class="smallprint">
-          A call-out fee of $1.90 may apply. Non-cash payments may incur a
-          surcharge of up to 5 %.
-        </p>
-      </section>
-      <section id="fares" class="glass-card">
-        <h2>Official Fares (Kimberley Region)</h2>
-        <p>
-          Fares are regulated by the WA Department of Transport. These are the
-          maximum fares chargeable.
-        </p>
-
-        <div class="table-wrap">
-          <!-- existing table unchanged -->
-        </div>
 
         <p class="smallprint">
           A call-out fee of $1.90 may apply. Non-cash payments may incur a
-          surcharge of up to 5 %.
+          surcharge of up to 5%.
         </p>
 
-        <!-- NEW: authoritative source note -->
         <p class="source-note">
           Based on WA DoT
           <a
             href="https://www.transport.wa.gov.au/on-demand-transport/booking-services/rank-hail-taxi-fares"
             target="_blank"
             rel="noopener"
-            >Schedule 5 (Kimberley)</a
+            >Schedule&nbsp;5 (Kimberley)</a
           >. Effective 3&nbsp;May&nbsp;2024.
         </p>
       </section>
@@ -226,16 +303,26 @@
 
     <!-- Footer -->
     <footer class="main-footer" id="footer">
-      © 2025 Derby Taxi Service. v25.10.007 — 28/10/2025 05:05 PM AWST (Derby)
-      Web design by <b>oze.au</b>
+      © 2025 Derby Taxi Service. v25.10.009 — 28/10/2025 09:30 PM AWST (Derby)
+      Web design by <a href="https://oze.au" class="footer-link">oze.au</a>
     </footer>
 
     <!-- Bottom actions -->
     <div class="floating-bottom">
-      <a href="tel:+61477313313" class="glass-pill large"
-        >📞 0477&nbsp;313&nbsp;313</a
+      <a
+        href="tel:+61477313313"
+        class="glass-pill large"
+        aria-label="Call Derby Taxi Service"
       >
-      <button id="enquire-pill" class="glass-pill large">✉️ Enquire Now</button>
+        📞 0477&nbsp;313&nbsp;313
+      </a>
+      <button
+        id="enquire-pill"
+        class="glass-pill large"
+        aria-label="Open enquiry form"
+      >
+        ✉️ Enquire Now
+      </button>
     </div>
 
     <!-- Modals -->
@@ -244,7 +331,7 @@
         <button class="modal-close" id="close-disclaimer" aria-label="Close">
           ×
         </button>
-        <h2>Privacy & Disclaimer</h2>
+        <h2>Privacy &amp; Disclaimer</h2>
         <p>
           <b>Privacy:</b> We collect your name, email and phone number solely to
           respond to your enquiry. No third-party sharing.
@@ -253,7 +340,13 @@
           <b>Disclaimer:</b> All information on this site is subject to change
           without notice. Please confirm details when booking.
         </p>
-        <button id="close-disclaimer-btn" class="glass-pill">Close</button>
+        <button
+          id="close-disclaimer-btn"
+          class="glass-pill"
+          aria-label="Close privacy and disclaimer"
+        >
+          Close
+        </button>
       </div>
     </div>
 
@@ -263,6 +356,14 @@
           ×
         </button>
         <h2>Make an Enquiry</h2>
+
+        <!-- Notice about email latency vs urgent phone booking -->
+        <p class="enquiry-notice">
+          This form sends an <b>email</b> and may not be seen for up to
+          <b>24 hours</b>. If you need a taxi <b>now</b>, please call
+          <a href="tel:+61477313313">0477&nbsp;313&nbsp;313</a>.
+        </p>
+
         <form id="enquiry-form" novalidate>
           <div class="grid">
             <label>Name<input type="text" name="name" required /></label>
@@ -300,6 +401,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

@@ -1,309 +1,403 @@
 /*
 # ==========================================
 # Project:     Derby Taxi Service ~ derbytaxiservice.com.au
-# Author:      Colin Dixon BSc, DipEd, Cert IV TAE
+# Author:      Colin Dixon BSc, DipEd, Coxswain Grade 1 NC, Cert IV TAE
 # Contact:     crdixon@gmail.com
-# Timestamp:   28/10/2025 05:05 PM AWST (Derby)
-# Version:     25.10.007
+# Timestamp:   28/10/2025 09:30 PM AWST (Derby)
+# Version:     25.10.008
 # File Name:   style.css
-# Description: Stable grid, centred modal, hero overlay, glass pills
+# Description: OzeGlass V1-10-02 styles; centred hero grid; 3D glass pills; footer link style; modals/table polish; responsive.
 # ==========================================
 */
 
+/* ---------- Theme tokens ---------- */
 :root {
-  --bg-img: url("images/ai-van-sunset-background.webp");
-  --accent: #ffc107;
+  --maxw: 1100px;
+  --radius: 12px;
+  --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.25);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   --blur: 12px;
-  --t: 0.25s ease;
-  --text-light: #f5f5f5;
-  --text-dark: #1a1a1a;
-  --card-dark: rgba(0, 0, 0, 0.42);
-  --card-light: rgba(255, 255, 255, 0.28);
-  --border-dark: rgba(255, 255, 255, 0.28);
-  --border-light: rgba(0, 0, 0, 0.24);
+
+  /* Palette */
+  --accent: #ffc107;
+  --accent-ink: #1a1a1a;
+
+  /* Light theme surfaces */
+  --card-bg-light: rgba(255, 255, 255, 0.16);
+  --card-bd-light: rgba(255, 255, 255, 0.35);
+  --ink-light: #1c1e21;
+  --page-bg-light: #f0f2f5;
+
+  /* Dark theme surfaces */
+  --card-bg-dark: rgba(0, 0, 0, 0.32);
+  --card-bd-dark: rgba(0, 0, 0, 0.55);
+  --ink-dark: #f5f5f5;
+  --page-bg-dark: #333;
+
+  /* Background image (optional; safe if missing) */
+  --bg-img: url("images/ai-van-sunset-background.webp");
 }
 
-[data-theme="dark"] {
-  --card: var(--card-dark);
-  --border: var(--border-dark);
-  --text: var(--text-light);
-}
+/* Theme mapping */
 [data-theme="light"] {
-  --card: var(--card-light);
-  --border: var(--border-light);
-  --text: var(--text-dark);
+  --card-bg: var(--card-bg-light);
+  --card-bd: var(--card-bd-light);
+  --ink: var(--ink-light);
+  --page-bg: var(--page-bg-light);
+}
+[data-theme="dark"] {
+  --card-bg: var(--card-bg-dark);
+  --card-bd: var(--card-bd-dark);
+  --ink: var(--ink-dark);
+  --page-bg: var(--page-bg-dark);
 }
 
-* {
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
 html,
 body {
-  margin: 0;
+  height: 100%;
 }
+
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+  margin: 0;
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-  background: #222 var(--bg-img) no-repeat center/cover fixed;
-  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--page-bg) var(--bg-img) no-repeat center/cover fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 96px; /* space for bottom pills */
 }
 
-/* Containers */
-.container {
-  max-width: 1100px;
-  margin-inline: auto;
-  padding: 0 16px;
-}
-.glass-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  backdrop-filter: blur(var(--blur));
-  -webkit-backdrop-filter: blur(var(--blur));
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-  padding: 24px;
-  margin: 20px 0;
-}
-
-/* HERO with overlay */
-.hero-wrap {
-  position: relative;
-  isolation: isolate;
-  margin-top: 18px;
-}
-.hero-wrap::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.45),
-    rgba(0, 0, 0, 0.15) 40%,
-    rgba(0, 0, 0, 0.45)
-  );
-}
-.hero {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  align-items: center;
-}
-.hero .logo {
-  max-width: 220px;
-  width: 100%;
+img {
+  max-width: 100%;
   height: auto;
   display: block;
-  margin: auto;
 }
-.hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  margin: 0.2rem 0 0.6rem;
+a {
+  color: var(--accent);
+  text-decoration: none;
 }
-.hero p {
-  margin: 0 0 1rem;
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* Services list */
-.services-list {
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------- OzeGlass cards ---------- */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-bd);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ---------- Top floating controls ---------- */
+.floating-top {
+  position: fixed;
+  inset: 16px 16px auto auto; /* top-right cluster */
+  display: flex;
+  gap: 10px;
+  z-index: 1001;
+}
+.floating-top .glass-pill.small {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+/* ---------- 3D Glass pill buttons ---------- */
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.28),
+        rgba(255, 255, 255, 0.12)
+      )
+      /* sheen */,
+    rgba(0, 0, 0, 0.08); /* base tint */
+  color: var(--accent-ink);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-inset), var(--shadow-strong);
+  text-transform: none;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+.glass-pill.large {
+  padding: 14px 22px;
+  font-size: 1.05rem;
+}
+.glass-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-inset), 0 14px 36px rgba(0, 0, 0, 0.42);
+}
+.glass-pill:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-inset), var(--shadow-soft);
+}
+.glass-pill:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Accent variant (if needed) */
+.glass-pill.accent {
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.32),
+      rgba(255, 255, 255, 0.08)
+    ),
+    var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---------- HERO ---------- */
+.hero-wrap {
+  display: flex;
+  justify-content: center;
+  padding: clamp(20px, 6vw, 48px) 16px;
+}
+.hero.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(160px, 280px) 1fr;
+  align-items: center;
+  gap: clamp(16px, 3vw, 24px);
+}
+.hero-col.hero-text h1 {
+  margin: 0 0 0.35em;
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  line-height: 1.2;
+}
+.hero-col.hero-text p {
+  margin: 0 0 0.9rem;
+  opacity: 0.95;
+}
+.logo {
+  width: min(260px, 38vw);
+  height: auto;
+}
+
+/* ---------- Sections ---------- */
+main {
+  padding: 0 0 24px;
+  display: block;
+}
+
+#services .services-list {
   list-style: none;
-  columns: 2;
-  gap: 16px;
+  margin: 0 0 0.75rem 0;
   padding: 0;
-  margin: 12px 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.4rem 0.9rem;
 }
-.services-list li {
+#services .services-list li {
   position: relative;
-  padding-left: 18px;
-  margin-bottom: 6px;
+  padding-left: 1.25rem;
 }
-.services-list li::before {
+#services .services-list li::before {
   content: "✓";
   position: absolute;
   left: 0;
+  top: 0;
   color: var(--accent);
+  font-weight: 900;
 }
 
-/* Table */
+.content-image {
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Fares table ---------- */
 .table-wrap {
   overflow-x: auto;
 }
 .fare-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.975rem;
 }
-.fare-table th,
+.fare-table thead th {
+  text-align: left;
+  font-weight: 700;
+  padding: 0.65rem 0.55rem;
+  border-bottom: 1px solid var(--card-bd);
+  background: rgba(0, 0, 0, 0.14);
+}
 .fare-table td {
-  padding: 0.7rem 0.6rem;
-  border-bottom: 1px solid var(--border);
-}
-.fare-table th {
-  background: rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 0.55rem;
+  border-bottom: 1px solid var(--card-bd);
 }
 .smallprint {
   font-size: 0.9rem;
   opacity: 0.85;
+  margin-top: 0.6rem;
+}
+.source-note {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
 }
 
-/* Footer (one line) */
+/* ---------- Footer ---------- */
 .main-footer {
+  margin: 24px 0;
   text-align: center;
-  padding: 0.8rem 1rem;
-  margin: 20px 0 90px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  padding: 10px 16px;
+  width: 100%;
 }
-.main-footer b {
+.footer-link {
   font-weight: 700;
-  color: var(--accent);
   text-decoration: none;
 }
+.footer-link:hover {
+  text-decoration: underline;
+}
 
-/* Floating pills */
-.floating-top {
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  display: flex;
-  gap: 10px;
-  z-index: 1001;
-}
-.floating-top .glass-pill.small {
-  padding: 6px 14px;
-  font-size: 0.82rem;
-}
+/* ---------- Bottom floating actions ---------- */
 .floating-bottom {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 16px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 1001;
 }
-
-.glass-pill {
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--text);
-  font-weight: 600;
-  padding: 12px 22px;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    0 4px 16px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s, background 0.2s;
-}
-.glass-pill:link,
-.glass-pill:visited {
-  text-decoration: none;
-}
-.source-note {
-  margin-top: 0.6rem;
-  font-size: 0.92rem;
-  opacity: 0.9;
-}
-.source-note a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--accent);
-}
-.source-note a:hover {
-  opacity: 0.85;
+.floating-bottom .glass-pill.large {
+  white-space: nowrap;
 }
 
-.glass-pill:hover {
-  background: rgba(255, 255, 255, 0.26);
-  transform: translateY(-1px);
-}
-.glass-pill.large {
-  font-size: 1rem;
-}
-
-/* Modal */
+/* ---------- Modals ---------- */
 .modal {
+  display: none; /* toggled via JS */
   position: fixed;
   inset: 0;
-  display: none;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 2000;
-}
-.modal.show {
-  display: grid;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1500;
 }
 .modal-card {
   max-width: 720px;
-  width: 92%;
+  margin: 6vh auto;
+  padding: 0;
   position: relative;
-  max-height: 85vh;
-  overflow: auto;
+}
+.modal-card.glass-card {
+  padding: clamp(1rem, 2vw, 1.25rem);
 }
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 16px;
-  font-size: 28px;
-  line-height: 1;
-  background: none;
+  top: 8px;
+  right: 12px;
+  background: transparent;
   border: none;
-  color: var(--text);
+  font-size: 24px;
+  color: var(--ink);
   cursor: pointer;
 }
 
 /* Enquiry form grid */
 #enquiry-form .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem 0.9rem;
+  margin: 0.5rem 0 0;
 }
 #enquiry-form label {
   display: flex;
   flex-direction: column;
-  font-size: 0.92rem;
+  gap: 6px;
+  font-weight: 600;
 }
 #enquiry-form input,
 #enquiry-form textarea {
-  margin-top: 6px;
-  padding: 10px;
+  width: 100%;
+  padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text);
-  font-size: 1rem;
+  border: 1px solid var(--card-bd);
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--ink);
 }
-#enquiry-form label.full {
+#enquiry-form .full {
   grid-column: 1 / -1;
 }
-#enquiry-form button {
-  margin-top: 10px;
-  justify-self: center;
+
+.enquiry-notice {
+  margin: 0.25rem 0 0.75rem;
+  opacity: 0.95;
 }
 
-/* Responsive */
-@media (max-width: 760px) {
-  .hero {
+/* ---------- Media queries ---------- */
+@media (max-width: 860px) {
+  .hero.container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .hero .logo {
-    max-width: 180px;
+  .hero-col.hero-logo {
+    justify-self: center;
   }
-  .services-list {
-    columns: 1;
+  .hero-col.hero-text {
+    justify-self: center;
   }
+  .logo {
+    width: min(220px, 45vw);
+  }
+}
+
+@media (max-width: 600px) {
   #enquiry-form .grid {
     grid-template-columns: 1fr;
   }
   .floating-top {
-    right: auto;
-    left: 14px;
+    inset: 12px 12px auto auto;
   }
+  .floating-bottom {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* ---------- Misc polish ---------- */
+::selection {
+  background: rgba(255, 193, 7, 0.35);
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--card-bd);
+}
+
+/* Optional: make <b> inside paragraphs slightly heavier without overdoing it */
+b,
+strong {
+  font-weight: 700;
 }
