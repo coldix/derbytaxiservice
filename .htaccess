@@ -11,6 +11,12 @@ RewriteRule ^ https://derbytaxiservice.com.au%{REQUEST_URI} [L,R=301]
 # ------------------------------------------
 AddType application/manifest+json .webmanifest
 
+# Protect VCS and hidden files
+RedirectMatch 404 ^/\.git
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
 # ------------------------------------------
 # Light cache for robots/sitemap
 # ------------------------------------------
